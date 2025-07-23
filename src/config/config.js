@@ -31,19 +31,7 @@ const config = {
       title: "Mahmoud-El-Esseily-El-Lella.mp3", // or Nature Sound
       autoplay: true,
       loop: true
-    },
-    // banks: [
-    //   {
-    //     bank: "Bank Central Asia",
-    //     accountNumber: "1234567890",
-    //     accountName: "Abdelrahman",
-    //   },
-    //   {
-    //     bank: "Bank Mandiri",
-    //     accountNumber: "0987654321",
-    //     accountName: "Hanan",
-    //   }
-    // ]
+    }
   }
 };
 
