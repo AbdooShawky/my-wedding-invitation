@@ -42,10 +42,8 @@ const LandingPage = ({ onOpenInvitation }) => (
           >
             <div className="inline-flex flex-col items-center space-y-1 bg-white/80 px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
               <Calendar className="w-5 h-5 text-rose-400" />
-              <p className="text-gray-700 font-medium text-center" >
-                {/* {formatEventDate(config.data.date)} */}
-                
-                الثلاثاء, 12 اغسطس 2025
+              <p className="text-gray-700 font-medium">
+                {formatEventDate(config.data.date)}
               </p>
             </div>
 
@@ -64,14 +62,13 @@ const LandingPage = ({ onOpenInvitation }) => (
             transition={{ delay: 0.5 }}
             className="text-center space-y-4"
           >
-           
             <div className="space-y-2">
-              <h4 className="text-3xl sm:text-4xl md:text-3xl font-serif text-gray-800 leading-tight">
-                عبدالرحمن
+              <h1 className="text-3xl sm:text-4xl md:text-3xl font-serif text-gray-800 leading-tight">
+                {config.data.groomName}
                 <span className="text-rose-400 mx-2 sm:mx-3">&</span>
-                حنان
-              </h4>
-              <div className="h-px w-48 sm:w-48 mx-auto bg-rose-200" />
+                {config.data.brideName}
+              </h1>
+              <div className="h-px w-16 sm:w-24 mx-auto bg-rose-200" />
             </div>
           </motion.div>
 
@@ -89,17 +86,13 @@ const LandingPage = ({ onOpenInvitation }) => (
               className="group relative w-full bg-rose-500 text-white px-6 py-3 sm:px-8 sm:py-3 rounded-xl font-medium shadow-lg hover:bg-rose-600 transition-all duration-200"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
+                <span>Open Invitation</span>
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                  ←
+                  →
                 </motion.span>
-                <span>
-                 
-                  افتح الدعوة 
-
-                </span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-rose-600 to-rose-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </motion.button>
@@ -109,6 +102,5 @@ const LandingPage = ({ onOpenInvitation }) => (
     </div>
   </motion.div>
 );
-
 
 export default LandingPage;

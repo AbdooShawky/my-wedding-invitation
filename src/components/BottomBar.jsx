@@ -11,9 +11,9 @@ import {
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { icon: Home, label: 'الصفحة الرئيسية', href: '#home' },
-  { icon: CalendarHeart, label: 'المناسبة', href: '#event' },
-  { icon: MapPin, label: 'العنوان', href: '#location' },
+  { icon: Home, label: 'Home', href: '#home' },
+  { icon: CalendarHeart, label: 'Event', href: '#event' },
+  // { icon: MapPin, label: 'Location', href: '#location' },
   // { icon: Gift, label: 'Gifts', href: '#gifts' },
   // { icon: MessageCircleHeart, label: 'Wishes', href: '#wishes' },
 ];
@@ -35,7 +35,7 @@ const menuItems = [
  * @returns {JSX.Element} A JSX element containing the animated bottom navigation bar.
  */
 const BottomBar = () => {
-  const [active, setActive] = React.useState('الصفحة الرئيسية');
+  const [active, setActive] = React.useState('home');
 
   return (
     <motion.div
@@ -45,7 +45,7 @@ const BottomBar = () => {
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
       <div className="backdrop-blur-md bg-white/90 border border-gray-200/80 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.07)] px-4 py-2">
-        <nav className="flex justify-between items-center">
+        <nav className="flex justify-around items-center">
           {menuItems.map((item) => (
             <motion.a
               key={item.label}
@@ -53,25 +53,25 @@ const BottomBar = () => {
               className={cn(
                 "flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-200",
                 "hover:bg-gray-50/80",
-                active === item.label
+                active === item.label.toLowerCase()
                   ? "text-primary bg-primary/5"
                   : "text-gray-600"
               )}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActive(item.label)}
+              onClick={() => setActive(item.label.toLowerCase())}
             >
               <item.icon
                 className={cn(
                   "h-[18px] w-[18px] sm:h-5 sm:w-5 mb-0.5 sm:mb-1 transition-colors duration-200",
-                  active === item.label
+                  active === item.label.toLowerCase()
                     ? "stroke-rose-500"
                     : "stroke-gray-600"
                 )}
               />
               <span className={cn(
                 "text-[10px] sm:text-xs font-medium transition-all duration-200 line-clamp-1",
-                active === item.label
+                active === item.label.toLowerCase()
                   ? "scale-105 text-rose-500"
                   : "scale-100"
               )}>

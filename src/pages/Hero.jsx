@@ -58,12 +58,8 @@ export default function Hero() {
                         <span className="text-xl sm:text-2xl font-bold text-rose-600">
                             {timeLeft[interval]}
                         </span>
-                        <span className="text-xs text-gray-500 capitalize">{interval} <br /> 
-                        {interval == "day" && "يوم"}
-                        {interval == "hour" && "ساعة"}
-                        {interval == "minute" && "دقيقة"}
-                        {interval == "second" && "ثانية"}
-                        
+                        <span className="text-xs text-gray-500 capitalize">{interval}
+
                         </span>
                     </motion.div>
                 ))}
@@ -126,7 +122,7 @@ export default function Hero() {
                         className="inline-block mx-auto"
                     >
                         <div className="px-4 py-1 text-sm bg-rose-50 text-rose-600 rounded-full border border-rose-200">
-                            سجلوا هذا التاريخ
+                            Save the date
 
                         </div>
                     </motion.div>
@@ -138,7 +134,7 @@ export default function Hero() {
                             transition={{ delay: 0.4 }}
                             className="text-gray-500 font-light italic text-base sm:text-lg"
                         >
-في ليلةٍ تملؤها الفرحة والسرور، نتشرف بدعوتكم لمشاركتنا حفل زفافنا.
+                            We are getting married!
                         </motion.p>
                         <motion.h2
                             initial={{ scale: 0.8, opacity: 0 }}
@@ -146,8 +142,7 @@ export default function Hero() {
                             transition={{ delay: 0.6 }}
                             className="text-3xl sm:text-3xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
                         >
-                        
-                            عبدالرحمن    &   حنان
+                            {config.data.groomName} & {config.data.brideName}
                         </motion.h2>
                     </div>
 
@@ -174,9 +169,8 @@ export default function Hero() {
                                     >
                                         <Calendar className="w-4 h-4 text-rose-400" />
                                         <span className="text-gray-700 font-medium text-sm sm:text-base text-center">
-                                            {/* {formatEventDate(config.data.date, "full")} */}
-                                           
-                                            الثلاثاء, 12 اغسطس 2025
+                                            {formatEventDate(config.data.date, "full")}
+
                                         </span>
                                     </motion.div>
 

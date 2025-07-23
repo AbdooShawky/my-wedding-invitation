@@ -1,6 +1,7 @@
 // EventCard.jsx
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import config from "@/config/config";
 import {
   Calendar,
   Clock,
@@ -9,6 +10,7 @@ import {
   X,
   Chrome,
   Apple,
+  ExternalLink,
   Calendar as CalendarIcon
 } from 'lucide-react';
 import { formatEventDate } from '@/lib/formatEventDate';
@@ -130,7 +132,7 @@ END:VCALENDAR`;
   };
 
   return (
-    <div className="relative" dir='rtl'>
+    <div className="relative">
       <motion.div
         className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4"
         initial={{ opacity: 0, y: 20 }}
@@ -151,26 +153,43 @@ END:VCALENDAR`;
         <div className="space-y-3 text-gray-600">
           <div className="flex items-center space-x-3">
             <Calendar className="w-5 h-5 text-rose-500" />
-            <span>الثلاثاء، 24 ديسمبر 2024</span>
+            <span>{formatEventDate(eventData.date)}</span>
           </div>
           <div className="flex items-center space-x-3">
             <Clock className="w-5 h-5 text-rose-500" />
-            <span>من الساعة 7:00 مساءً حتى 11:00 مساءً </span>
+            <span>{eventData.startTime} - {eventData.endTime} </span>
           </div>
-          <div className="flex items-center space-x-3">
+          {/* <div className="flex items-center space-x-3">
             <MapPin className="w-5 h-5 text-rose-500" />
-            <span>قاعة 7Sky – دار المركبات</span>
+            <span>7Sky Hall – Dar El Markabat </span>
+          </div> */}
+          <div className="flex items-start space-x-4">
+            <MapPin className="w-5 h-5 text-rose-500 mt-1" />
+            <p className="text-gray-600 flex-1">{config.data.address}</p>
           </div>
         </div>
+        <div className="pt-4">
+          <motion.a
+            href={config.data.maps_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: true }}
+            className="w-full flex items-center justify-center gap-1.5 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors text-sm"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span className="font-semibold">View Map</span>
+          </motion.a>
+        </div>
       </motion.div>
-
       <Modal
         isOpen={showCalendarModal}
         onClose={() => setShowCalendarModal(false)}
       >
         <div className="space-y-6 ">
           <div className="flex justify-between  items-center">
-            <h3 className="text-xl font-semibold text-gray-800">أضف إلى التقويم</h3>
+            <h3 className="text-xl font-semibold text-gray-800">Add to Calendar</h3>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -183,20 +202,20 @@ END:VCALENDAR`;
 
           <div className="space-y-3">
             <CalendarButton
-              icon={(props) => <Chrome {...props} className="w-5 h-5 text-rose-500 ml-2" />}
-              label="تقويم Google"
+              icon={(props) => <Chrome {...props} className="w-5 h-5 text-rose-500" />}
+              label="Google Calendar"
               onClick={() => window.open(googleCalendarLink(), '_blank')}
             />
 
             <CalendarButton
-              icon={(props) => <Apple {...props} className="w-5 h-5 text-gray-900 ml-2" />}
-              label="تقويم Apple"
+              icon={(props) => <Apple {...props} className="w-5 h-5 text-gray-900" />}
+              label="Apple Calendar"
               onClick={downloadICSFile}
             />
 
             <CalendarButton
-              icon={(props) => <CalendarIcon {...props} className="w-5 h-5 text-blue-600 ml-2" />}
-              label="تقويم Outlook"
+              icon={(props) => <CalendarIcon {...props} className="w-5 h-5 text-blue-600" />}
+              label="Outlook Calendar"
               onClick={downloadICSFile}
             />
           </div>

@@ -1,7 +1,7 @@
 import EventCards from '@/components/EventsCard'
 import config from '@/config/config'
 import { motion } from 'framer-motion'
-import { Heart } from 'lucide-react'
+import { Heart , ExternalLink} from 'lucide-react'
 
 export default function Events() {
     return (
@@ -30,7 +30,7 @@ export default function Events() {
                             transition={{ delay: 0.2 }}
                             className="inline-block text-rose-500 font-medium mb-2"
                         >
-                            {'{وَخَلَقْنَاكُمْ أَزْوَاجًا}'}
+                            You're Invited to Our Wedding Celebration
                         </motion.span>
 
                         <motion.h2
@@ -38,10 +38,9 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight"
+                            className="text-4xl md:text-4xl font-serif text-gray-800 leading-tight"
                         >
-                            نتشرف بدعوتكم لحضور حفل زفـــاف 
-                        </motion.h2>
+                            Join us for a celebration of love and new beginnings.                        </motion.h2>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +49,7 @@ export default function Events() {
                             transition={{ delay: 0.4 }}
                             className="text-gray-500 max-w-md mx-auto"
                         >
-                            ندعوكم بكل ود لحضور حفل زفافنا، فوجودكم يضيف سعادة إلى هذه المناسبة الخاصة.
+                            We’d be truly happy to have you with us.
                         </motion.p>
 
                         {/* Decorative Line */}
@@ -78,6 +77,7 @@ export default function Events() {
                         className="max-w-2xl mx-auto"
                     >
                         <EventCards events={config.data.agenda} />
+                        
                     </motion.div>
                 </motion.div>
             </section>
