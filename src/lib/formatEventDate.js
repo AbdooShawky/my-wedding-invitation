@@ -1,8 +1,8 @@
 /**
- * Formats a date string into Indonesian format
+ * Formats a date string into format
  * @param {string} isoString - The ISO date string to format
  * @param {('full'|'short'|'time')} [format='full'] - The format type to use
- * @returns {string} The formatted date string in Indonesian
+ * @returns {string} The formatted date string in
  * 
  * @example
  * // returns "Senin, 1 Januari 2024"
@@ -39,8 +39,8 @@ export const formatEventDate = (isoString, format = 'full') => {
         }
     };
 
-    // Indonesian month names mapping
-    const monthsIndonesian = {
+    // month names mapping
+    const months = {
         'January': 'January',
         'February': 'February',
         'March': 'March',
@@ -55,8 +55,8 @@ export const formatEventDate = (isoString, format = 'full') => {
         'December': 'December'
     };
 
-    // Indonesian day names mapping
-    const daysIndonesian = {
+    // day names mapping
+    const days = {
         'Sunday': 'Sunday',
         'Monday': 'Monday',
         'Tuesday': 'Tuesday',
@@ -73,13 +73,13 @@ export const formatEventDate = (isoString, format = 'full') => {
         return date.toLocaleTimeString('en-US', formats[format]);
     }
 
-    // Replace English month and day names with Indonesian ones
-    Object.keys(monthsIndonesian).forEach(english => {
-        formatted = formatted.replace(english, monthsIndonesian[english]);
+    // Replace English month and day names with ones
+    Object.keys(months).forEach(english => {
+        formatted = formatted.replace(english, months[english]);
     });
 
-    Object.keys(daysIndonesian).forEach(english => {
-        formatted = formatted.replace(english, daysIndonesian[english]);
+    Object.keys(days).forEach(english => {
+        formatted = formatted.replace(english, days[english]);
     });
 
     // Format adjustment for full date
